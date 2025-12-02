@@ -2,232 +2,220 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>SexyChat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   
   <style>
-    /* Modern Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Outfit', sans-serif;
-      /* Ultra Dark "Night Life" Theme */
-      background: #0f0f0f;
-      background-image: radial-gradient(circle at 50% 0%, #4a0018 0%, #0f0f0f 60%);
-      min-height: 100vh;
+      background: #000;
+      color: #fff;
+      /* Prevent horizontal scroll */
+      overflow-x: hidden; 
+      /* Center on desktop, full on mobile */
       display: flex;
       justify-content: center;
-      align-items: center;
-      color: #fff;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    .app-container {
-      position: relative;
+    .mobile-container {
       width: 100%;
-      max-width: 400px;
-      padding: 40px 30px;
+      max-width: 450px; /* Limits width on PC */
+      background: #0f0f0f;
+      background-image: linear-gradient(180deg, #2a0010 0%, #0a0a0a 40%);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      /* Cleaner "floating" look */
-      border-radius: 30px;
-      background: rgba(20, 20, 20, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      position: relative;
+      min-height: 100vh;
+      padding-bottom: 90px; /* Space for fixed button */
     }
 
-    /* Logo / Title Area */
-    .brand {
-      margin-bottom: 25px;
+    /* Header Section */
+    .header {
+      padding: 25px 20px 15px;
       text-align: center;
     }
 
-    h1 {
-      font-size: 42px;
+    .header h1 {
+      font-size: 36px;
       font-weight: 800;
-      letter-spacing: -1px;
-      background: linear-gradient(to right, #fff, #ff4d88);
+      background: linear-gradient(to right, #fff, #ff3366);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 5px;
+      letter-spacing: -0.5px;
     }
 
-    .tagline {
-      font-size: 15px;
-      color: #aaa;
-      font-weight: 400;
+    .header p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      margin-top: 5px;
     }
 
-    /* Visual Content */
-    .preview-card {
+    /* Main Image - Full Width Feel */
+    .hero-image {
       width: 100%;
-      height: 220px;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 30px;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0 15px;
+      margin-bottom: 25px;
     }
 
-    .preview-card img {
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* Square for Instagram vibe */
+      border-radius: 25px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(255, 0, 85, 0.15);
+      position: relative;
+    }
+
+    .image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
     }
 
-    .preview-card:hover img {
-      transform: scale(1.1);
+    /* Live Badge on Image */
+    .live-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* Features List - Modern "Pills" */
-    .features {
-      width: 100%;
+    .dot {
+      width: 8px; height: 8px;
+      background: #ff0055;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Feature List */
+    .features-list {
+      padding: 0 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-bottom: 35px;
     }
 
-    .feature-item {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 15px 20px;
-      border-radius: 16px;
+    .feature-row {
       display: flex;
       align-items: center;
-      gap: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 16px;
+      border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: background 0.3s;
     }
 
-    .feature-item:hover {
-      background: rgba(255, 255, 255, 0.08);
+    .f-icon {
+      font-size: 22px;
+      margin-right: 15px;
+      width: 30px;
+      text-align: center;
     }
 
-    .icon {
-      font-size: 20px;
-      filter: drop-shadow(0 0 5px rgba(255, 77, 136, 0.5));
-    }
-
-    .text {
+    .f-text {
       font-size: 16px;
       font-weight: 500;
-      color: #eee;
+      color: #eaeaea;
     }
 
-    /* CTA Button */
-    .cta-button {
+    /* Fixed Bottom Button */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
-      padding: 18px;
-      background: #ff0055;
-      border-radius: 18px;
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 18px;
-      text-align: center;
+      max-width: 450px;
+      padding: 15px 20px 25px;
+      background: linear-gradient(to top, #000 80%, transparent);
+      z-index: 100;
+    }
+
+    .download-btn {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
-      transition: all 0.2s ease;
-      position: relative;
-      overflow: hidden;
+      width: 100%;
+      background: #ff0055;
+      color: white;
+      text-decoration: none;
+      padding: 18px;
+      border-radius: 100px;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: 0 5px 25px rgba(255, 0, 85, 0.4);
+      transition: transform 0.2s;
     }
 
-    .cta-button:active {
-      transform: scale(0.98);
+    .download-btn:active {
+      transform: scale(0.96);
     }
 
-    .cta-button::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(rgba(255,255,255,0.2), transparent);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    
-    .cta-button:hover::after {
-      opacity: 1;
+    .download-btn span {
+      margin-right: 10px;
     }
 
-    /* Footer / Disclaimer */
-    .disclaimer {
-      margin-top: 25px;
-      font-size: 12px;
-      color: #666;
-      text-align: center;
-      line-height: 1.5;
-    }
-    
-    .disclaimer strong {
-      color: #ff4d88;
-    }
-
-    /* Animation */
-    .fade-in {
-      animation: fadeInUp 0.8s ease backwards;
-    }
-    
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes pulse {
+      0% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); }
+      70% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(255, 0, 85, 0); }
+      100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); }
     }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="mobile-container">
     
-    <div class="brand fade-in">
+    <div class="header">
       <h1>SexyChat</h1>
-      <p class="tagline">Exclusive Live Experience</p>
+      <p>#1 Rated Adult Video App</p>
     </div>
 
-    <div class="preview-card fade-in delay-1">
-      <img src="./photo_6152430258435591236_x.jpg" alt="App Preview" onerror="this.src='https://via.placeholder.com/400x300/330011/ff0055?text=App+Preview'"/>
-    </div>
-
-    <div class="features fade-in delay-2">
-      <div class="feature-item">
-        <span class="icon">🔒</span>
-        <span class="text">प्राइवेट एडल्ट बातचीत</span>
-      </div>
-      <div class="feature-item">
-        <span class="icon">💎</span>
-        <span class="text">10 मिनट की कॉल सिर्फ ₹10 में</span>
-      </div>
-      <div class="feature-item">
-        <span class="icon">🔞</span>
-        <span class="text">केवल 18+ सामग्री</span>
-      </div>
-      <div class="feature-item">
-        <span class="icon">📹</span>
-        <span class="text">न्यूड वीडियो कॉल</span>
+    <div class="hero-image">
+      <div class="image-wrapper">
+        <div class="live-badge"><div class="dot"></div> LIVE NOW</div>
+        <img src="./photo_6152430258435591236_x.jpg" alt="Model Preview" onerror="this.src='https://via.placeholder.com/400?text=App+Preview'"/>
       </div>
     </div>
 
-    <a href="./SEXY_CHAT ...apk" class="cta-button fade-in delay-3" download>
-      <span>Download Now</span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-    </a>
+    <div class="features-list">
+      <div class="feature-row">
+        <div class="f-icon">🔒</div>
+        <div class="f-text">प्राइवेट एडल्ट बातचीत</div>
+      </div>
+      <div class="feature-row">
+        <div class="f-icon">💎</div>
+        <div class="f-text">10 मिनट की कॉल सिर्फ ₹10 में</div>
+      </div>
+      <div class="feature-row">
+        <div class="f-icon">🔞</div>
+        <div class="f-text">केवल 18+ सामग्री</div>
+      </div>
+      <div class="feature-row">
+        <div class="f-icon">📹</div>
+        <div class="f-text">न्यूड वीडियो कॉल</div>
+      </div>
+    </div>
 
-    <div class="disclaimer fade-in delay-3">
-      <strong>⚠️ 18+ Only.</strong> Contains adult themes.<br>
-      By downloading, you agree to our terms of service.
+    <div class="bottom-bar">
+      <a href="./SEXY_CHAT ...apk" class="download-btn" download>
+        <span>Download App</span> ⬇
+      </a>
     </div>
 
   </div>
@@ -240,232 +228,220 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>SexyChat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   
   <style>
-    /* Modern Reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Outfit', sans-serif;
-      /* Ultra Dark "Night Life" Theme */
-      background: #0f0f0f;
-      background-image: radial-gradient(circle at 50% 0%, #4a0018 0%, #0f0f0f 60%);
-      min-height: 100vh;
+      background: #000;
+      color: #fff;
+      /* Prevent horizontal scroll */
+      overflow-x: hidden; 
+      /* Center on desktop, full on mobile */
       display: flex;
       justify-content: center;
-      align-items: center;
-      color: #fff;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    .app-container {
-      position: relative;
+    .mobile-container {
       width: 100%;
-      max-width: 400px;
-      padding: 40px 30px;
+      max-width: 450px; /* Limits width on PC */
+      background: #0f0f0f;
+      background-image: linear-gradient(180deg, #2a0010 0%, #0a0a0a 40%);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      /* Cleaner "floating" look */
-      border-radius: 30px;
-      background: rgba(20, 20, 20, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      position: relative;
+      min-height: 100vh;
+      padding-bottom: 90px; /* Space for fixed button */
     }
 
-    /* Logo / Title Area */
-    .brand {
-      margin-bottom: 25px;
+    /* Header Section */
+    .header {
+      padding: 25px 20px 15px;
       text-align: center;
     }
 
-    h1 {
-      font-size: 42px;
+    .header h1 {
+      font-size: 36px;
       font-weight: 800;
-      letter-spacing: -1px;
-      background: linear-gradient(to right, #fff, #ff4d88);
+      background: linear-gradient(to right, #fff, #ff3366);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 5px;
+      letter-spacing: -0.5px;
     }
 
-    .tagline {
-      font-size: 15px;
-      color: #aaa;
-      font-weight: 400;
+    .header p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      margin-top: 5px;
     }
 
-    /* Visual Content */
-    .preview-card {
+    /* Main Image - Full Width Feel */
+    .hero-image {
       width: 100%;
-      height: 220px;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 30px;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0 15px;
+      margin-bottom: 25px;
     }
 
-    .preview-card img {
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* Square for Instagram vibe */
+      border-radius: 25px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(255, 0, 85, 0.15);
+      position: relative;
+    }
+
+    .image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
     }
 
-    .preview-card:hover img {
-      transform: scale(1.1);
+    /* Live Badge on Image */
+    .live-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* Features List - Modern "Pills" */
-    .features {
-      width: 100%;
+    .dot {
+      width: 8px; height: 8px;
+      background: #ff0055;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Feature List */
+    .features-list {
+      padding: 0 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-bottom: 35px;
     }
 
-    .feature-item {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 15px 20px;
-      border-radius: 16px;
+    .feature-row {
       display: flex;
       align-items: center;
-      gap: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 16px;
+      border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: background 0.3s;
     }
 
-    .feature-item:hover {
-      background: rgba(255, 255, 255, 0.08);
+    .f-icon {
+      font-size: 22px;
+      margin-right: 15px;
+      width: 30px;
+      text-align: center;
     }
 
-    .icon {
-      font-size: 20px;
-      filter: drop-shadow(0 0 5px rgba(255, 77, 136, 0.5));
-    }
-
-    .text {
+    .f-text {
       font-size: 16px;
       font-weight: 500;
-      color: #eee;
+      color: #eaeaea;
     }
 
-    /* CTA Button */
-    .cta-button {
+    /* Fixed Bottom Button */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
-      padding: 18px;
-      background: #ff0055;
-      border-radius: 18px;
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 18px;
-      text-align: center;
+      max-width: 450px;
+      padding: 15px 20px 25px;
+      background: linear-gradient(to top, #000 80%, transparent);
+      z-index: 100;
+    }
+
+    .download-btn {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
-      transition: all 0.2s ease;
-      position: relative;
-      overflow: hidden;
+      width: 100%;
+      background: #ff0055;
+      color: white;
+      text-decoration: none;
+      padding: 18px;
+      border-radius: 100px;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: 0 5px 25px rgba(255, 0, 85, 0.4);
+      transition: transform 0.2s;
     }
 
-    .cta-button:active {
-      transform: scale(0.98);
+    .download-btn:active {
+      transform: scale(0.96);
     }
 
-    .cta-button::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(rgba(255,255,255,0.2), transparent);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    
-    .cta-button:hover::after {
-      opacity: 1;
+    .download-btn span {
+      margin-right: 10px;
     }
 
-    /* Footer / Disclaimer */
-    .disclaimer {
-      margin-top: 25px;
-      font-size: 12px;
-      color: #666;
-      text-align: center;
-      line-height: 1.5;
-    }
-    
-    .disclaimer strong {
-      color: #ff4d88;
-    }
-
-    /* Animation */
-    .fade-in {
-      animation: fadeInUp 0.8s ease backwards;
-    }
-    
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes pulse {
+      0% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); }
+      70% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(255, 0, 85, 0); }
+      100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); }
     }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="mobile-container">
     
-    <div class="brand fade-in">
+    <div class="header">
       <h1>SexyChat</h1>
-      <p class="tagline">Exclusive Live Experience</p>
+      <p>#1 Rated Adult Video App</p>
     </div>
 
-    <div class="preview-card fade-in delay-1">
-      <img src="./photo_6152430258435591236_x.jpg" alt="App Preview" onerror="this.src='https://via.placeholder.com/400x300/330011/ff0055?text=App+Preview'"/>
-    </div>
-
-    <div class="features fade-in delay-2">
-      <div class="feature-item">
-        <span class="icon">🔒</span>
-        <span class="text">प्राइवेट एडल्ट बातचीत</span>
-      </div>
-      <div class="feature-item">
-        <span class="icon">💎</span>
-        <span class="text">10 मिनट की कॉल सिर्फ ₹10 में</span>
-      </div>
-      <div class="feature-item">
-        <span class="icon">🔞</span>
-        <span class="text">केवल 18+ सामग्री</span>
-      </div>
-      <div class="feature-item">
-        <span class="icon">📹</span>
-        <span class="text">न्यूड वीडियो कॉल</span>
+    <div class="hero-image">
+      <div class="image-wrapper">
+        <div class="live-badge"><div class="dot"></div> LIVE NOW</div>
+        <img src="./photo_6152430258435591236_x.jpg" alt="Model Preview" onerror="this.src='https://via.placeholder.com/400?text=App+Preview'"/>
       </div>
     </div>
 
-    <a href="./SEXY_CHAT ...apk" class="cta-button fade-in delay-3" download>
-      <span>Download Now</span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-    </a>
+    <div class="features-list">
+      <div class="feature-row">
+        <div class="f-icon">🔒</div>
+        <div class="f-text">प्राइवेट एडल्ट बातचीत</div>
+      </div>
+      <div class="feature-row">
+        <div class="f-icon">💎</div>
+        <div class="f-text">10 मिनट की कॉल सिर्फ ₹10 में</div>
+      </div>
+      <div class="feature-row">
+        <div class="f-icon">🔞</div>
+        <div class="f-text">केवल 18+ सामग्री</div>
+      </div>
+      <div class="feature-row">
+        <div class="f-icon">📹</div>
+        <div class="f-text">न्यूड वीडियो कॉल</div>
+      </div>
+    </div>
 
-    <div class="disclaimer fade-in delay-3">
-      <strong>⚠️ 18+ Only.</strong> Contains adult themes.<br>
-      By downloading, you agree to our terms of service.
+    <div class="bottom-bar">
+      <a href="./SEXY_CHAT ...apk" class="download-btn" download>
+        <span>Download App</span> ⬇
+      </a>
     </div>
 
   </div>
