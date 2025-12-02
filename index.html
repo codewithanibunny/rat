@@ -9,33 +9,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   
   <style>
+    /* RESET - Basic Setup */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: #000;
+      background-color: #000;
       color: #fff;
-      /* Prevent horizontal scroll */
-      overflow-x: hidden; 
-      /* Center on desktop, full on mobile */
       display: flex;
       justify-content: center;
       min-height: 100vh;
+      overflow-x: hidden; /* Stops side-scrolling */
     }
 
+    /* Main Phone Container */
     .mobile-container {
       width: 100%;
-      max-width: 450px; /* Limits width on PC */
+      max-width: 450px; /* Limits width so it looks like an app on PC */
       background: #0f0f0f;
       background-image: linear-gradient(180deg, #2a0010 0%, #0a0a0a 40%);
       display: flex;
       flex-direction: column;
       position: relative;
       min-height: 100vh;
-      padding-bottom: 90px; /* Space for fixed button */
+      padding-bottom: 90px; /* Space for the bottom button */
+      box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Shadow for PC view */
     }
 
-    /* Header Section */
+    /* Header */
     .header {
       padding: 25px 20px 15px;
       text-align: center;
@@ -48,15 +49,15 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
+      margin-bottom: 5px;
     }
 
     .header p {
       color: rgba(255, 255, 255, 0.6);
       font-size: 14px;
-      margin-top: 5px;
     }
 
-    /* Main Image - Full Width Feel */
+    /* Main Image Area */
     .hero-image {
       width: 100%;
       padding: 0 15px;
@@ -65,7 +66,7 @@
 
     .image-wrapper {
       width: 100%;
-      aspect-ratio: 1 / 1; /* Square for Instagram vibe */
+      aspect-ratio: 1 / 1;
       border-radius: 25px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -79,7 +80,7 @@
       object-fit: cover;
     }
 
-    /* Live Badge on Image */
+    /* 'LIVE' Badge */
     .live-badge {
       position: absolute;
       top: 15px;
@@ -103,7 +104,7 @@
       animation: pulse 1.5s infinite;
     }
 
-    /* Feature List */
+    /* Features List */
     .features-list {
       padding: 0 20px;
       display: flex;
@@ -133,17 +134,17 @@
       color: #eaeaea;
     }
 
-    /* Fixed Bottom Button */
+    /* Sticky Bottom Button */
     .bottom-bar {
       position: fixed;
       bottom: 0;
+      width: 100%;
+      max-width: 450px; /* Matches container width */
+      padding: 15px 20px 25px;
+      background: linear-gradient(to top, #000000 80%, transparent);
+      z-index: 100;
       left: 50%;
       transform: translateX(-50%);
-      width: 100%;
-      max-width: 450px;
-      padding: 15px 20px 25px;
-      background: linear-gradient(to top, #000 80%, transparent);
-      z-index: 100;
     }
 
     .download-btn {
@@ -166,10 +167,6 @@
       transform: scale(0.96);
     }
 
-    .download-btn span {
-      margin-right: 10px;
-    }
-
     @keyframes pulse {
       0% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); }
       70% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(255, 0, 85, 0); }
@@ -189,6 +186,7 @@
     <div class="hero-image">
       <div class="image-wrapper">
         <div class="live-badge"><div class="dot"></div> LIVE NOW</div>
+        <!-- Ensure image name matches EXACTLY -->
         <img src="./photo_6152430258435591236_x.jpg" alt="Model Preview" onerror="this.src='https://via.placeholder.com/400?text=App+Preview'"/>
       </div>
     </div>
@@ -203,25 +201,7 @@
         <div class="f-text">10 मिनट की कॉल सिर्फ ₹10 में</div>
       </div>
       <div class="feature-row">
-        <div class="f-icon">🔞</div>
-        <div class="f-text">केवल 18+ सामग्री</div>
-      </div>
-      <div class="feature-row">
-        <div class="f-icon">📹</div>
-        <div class="f-text">न्यूड वीडियो कॉल</div>
-      </div>
-    </div>
-
-    <div class="bottom-bar">
-      <a href="./SEXY_CHAT ...apk" class="download-btn" download>
-        <span>Download App</span> ⬇
-      </a>
-    </div>
-
-  </div>
-
-</body>
-</html>
+        <div class="f-
 
 
 <!DOCTYPE html>
@@ -235,33 +215,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   
   <style>
+    /* RESET - Basic Setup */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: #000;
+      background-color: #000;
       color: #fff;
-      /* Prevent horizontal scroll */
-      overflow-x: hidden; 
-      /* Center on desktop, full on mobile */
       display: flex;
       justify-content: center;
       min-height: 100vh;
+      overflow-x: hidden; /* Stops side-scrolling */
     }
 
+    /* Main Phone Container */
     .mobile-container {
       width: 100%;
-      max-width: 450px; /* Limits width on PC */
+      max-width: 450px; /* Limits width so it looks like an app on PC */
       background: #0f0f0f;
       background-image: linear-gradient(180deg, #2a0010 0%, #0a0a0a 40%);
       display: flex;
       flex-direction: column;
       position: relative;
       min-height: 100vh;
-      padding-bottom: 90px; /* Space for fixed button */
+      padding-bottom: 90px; /* Space for the bottom button */
+      box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Shadow for PC view */
     }
 
-    /* Header Section */
+    /* Header */
     .header {
       padding: 25px 20px 15px;
       text-align: center;
@@ -274,15 +255,15 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
+      margin-bottom: 5px;
     }
 
     .header p {
       color: rgba(255, 255, 255, 0.6);
       font-size: 14px;
-      margin-top: 5px;
     }
 
-    /* Main Image - Full Width Feel */
+    /* Main Image Area */
     .hero-image {
       width: 100%;
       padding: 0 15px;
@@ -291,7 +272,7 @@
 
     .image-wrapper {
       width: 100%;
-      aspect-ratio: 1 / 1; /* Square for Instagram vibe */
+      aspect-ratio: 1 / 1;
       border-radius: 25px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -305,7 +286,7 @@
       object-fit: cover;
     }
 
-    /* Live Badge on Image */
+    /* 'LIVE' Badge */
     .live-badge {
       position: absolute;
       top: 15px;
@@ -329,7 +310,7 @@
       animation: pulse 1.5s infinite;
     }
 
-    /* Feature List */
+    /* Features List */
     .features-list {
       padding: 0 20px;
       display: flex;
@@ -359,17 +340,17 @@
       color: #eaeaea;
     }
 
-    /* Fixed Bottom Button */
+    /* Sticky Bottom Button */
     .bottom-bar {
       position: fixed;
       bottom: 0;
+      width: 100%;
+      max-width: 450px; /* Matches container width */
+      padding: 15px 20px 25px;
+      background: linear-gradient(to top, #000000 80%, transparent);
+      z-index: 100;
       left: 50%;
       transform: translateX(-50%);
-      width: 100%;
-      max-width: 450px;
-      padding: 15px 20px 25px;
-      background: linear-gradient(to top, #000 80%, transparent);
-      z-index: 100;
     }
 
     .download-btn {
@@ -392,10 +373,6 @@
       transform: scale(0.96);
     }
 
-    .download-btn span {
-      margin-right: 10px;
-    }
-
     @keyframes pulse {
       0% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.7); }
       70% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(255, 0, 85, 0); }
@@ -415,6 +392,7 @@
     <div class="hero-image">
       <div class="image-wrapper">
         <div class="live-badge"><div class="dot"></div> LIVE NOW</div>
+        <!-- Ensure image name matches EXACTLY -->
         <img src="./photo_6152430258435591236_x.jpg" alt="Model Preview" onerror="this.src='https://via.placeholder.com/400?text=App+Preview'"/>
       </div>
     </div>
@@ -429,24 +407,7 @@
         <div class="f-text">10 मिनट की कॉल सिर्फ ₹10 में</div>
       </div>
       <div class="feature-row">
-        <div class="f-icon">🔞</div>
-        <div class="f-text">केवल 18+ सामग्री</div>
-      </div>
-      <div class="feature-row">
-        <div class="f-icon">📹</div>
-        <div class="f-text">न्यूड वीडियो कॉल</div>
-      </div>
-    </div>
-
-    <div class="bottom-bar">
-      <a href="./SEXY_CHAT ...apk" class="download-btn" download>
-        <span>Download App</span> ⬇
-      </a>
-    </div>
-
-  </div>
-
-</body>
-</html>
+        <div class="f-
 
 
+          
